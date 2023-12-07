@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: os-project-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Siroj12@
+      POSTGRES_DB: os-project
+
+  java-app:
+    build: .
+    container_name: os-project
+    depends_on:
+      - postgres
